@@ -68,7 +68,7 @@ export default function Favorites() {
       {/* Empty state */}
       {!loading && !error && favorites.length === 0 && (
         <div className="text-center py-20">
-          <div className="text-6xl mb-5">🤍</div>
+          <div className="text-6xl mb-5"></div>
           <h2 className="text-xl font-display font-semibold text-gray-800 mb-2">No favorites yet</h2>
           <p className="text-gray-500 text-sm mb-6">
             Browse templates and click the heart icon to save them here

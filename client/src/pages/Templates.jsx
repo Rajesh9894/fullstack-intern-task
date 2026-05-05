@@ -56,7 +56,7 @@ export default function Templates() {
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
         {/* Search */}
         <div className="relative flex-1">
-          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm">🔍</span>
+          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></span>
           <input
             type="text"
             className="input pl-9"
@@ -131,7 +131,7 @@ export default function Templates() {
         <>
           {filtered.length === 0 ? (
             <div className="text-center py-16 text-gray-400">
-              <div className="text-5xl mb-4">🔍</div>
+              <div className="text-5xl mb-4"></div>
               <p className="font-medium text-gray-600">No templates found</p>
               <p className="text-sm mt-1">Try a different search term or category</p>
             </div>

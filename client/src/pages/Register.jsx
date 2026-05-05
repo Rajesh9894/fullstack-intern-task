@@ -61,7 +61,7 @@ export default function Register() {
                 className="input"
                 type="text"
                 name="name"
-                placeholder="John Doe"
+                placeholder="your name"
                 value={form.name}
                 onChange={handleChange}
                 required
@@ -76,7 +76,7 @@ export default function Register() {
                 className="input"
                 type="email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="Enter your email"
                 value={form.email}
                 onChange={handleChange}
                 required
