@@ -61,7 +61,7 @@ export default function Favorites() {
       {/* Error */}
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl p-5 text-sm">
-          ⚠️ {error}
+          {error}
         </div>
       )}
 

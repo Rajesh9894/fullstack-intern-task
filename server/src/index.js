@@ -23,12 +23,12 @@ app.use(express.json());
 
 // Start only after DB is ready
 initDB().then(async () => {
-  console.log('✅ Database ready');
+  console.log('Database ready');
 
   // Auto-seed if no templates
   const count = queryOne('SELECT COUNT(*) as count FROM templates');
   if (!count || count.count === 0) {
-    console.log('📦 Seeding templates...');
+    console.log(' Seeding templates...');
     const { execute } = require('./db/database');
     const templates = [
       { name: 'Startup Landing Page', description: 'A modern, conversion-focused landing page for SaaS startups.', thumbnail_url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop', category: 'Landing Page' },
@@ -44,7 +44,7 @@ initDB().then(async () => {
       execute('INSERT INTO templates (name, description, thumbnail_url, category) VALUES (?, ?, ?, ?)',
         [t.name, t.description, t.thumbnail_url, t.category]);
     }
-    console.log(`✅ Seeded ${templates.length} templates`);
+    console.log(` Seeded ${templates.length} templates`);
   }
 
   // Routes
@@ -61,7 +61,7 @@ initDB().then(async () => {
   });
 
   app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+    console.log(` Server running at http://localhost:${PORT}`);
   });
 }).catch((err) => {
   console.error('Failed to initialize database:', err);

@@ -18,7 +18,7 @@ async function seed() {
   await initDB();
   const existing = queryOne('SELECT COUNT(*) as count FROM templates');
   if (existing && existing.count > 0) {
-    console.log(`✅ Already seeded (${existing.count} templates). Skipping.`);
+    console.log(` Already seeded (${existing.count} templates). Skipping.`);
     process.exit(0);
   }
   for (const t of templates) {
@@ -27,7 +27,7 @@ async function seed() {
       [t.name, t.description, t.thumbnail_url, t.category]
     );
   }
-  console.log(`✅ Seeded ${templates.length} templates!`);
+  console.log(`Seeded ${templates.length} templates!`);
   process.exit(0);
 }
 

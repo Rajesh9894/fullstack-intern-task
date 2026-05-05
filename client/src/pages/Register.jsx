@@ -48,7 +48,7 @@ export default function Register() {
         <div className="card p-8">
           {error && (
             <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl px-4 py-3 mb-5">
-              ⚠️ {error}
+               {error}
             </div>
           )}
 
