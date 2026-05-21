@@ -1,142 +1,110 @@
-# 🧩 TemplateHub — Mini SaaS Template Store
+# TemplateHub — Mini SaaS Template Store
 
-TemplateHub is a simple full-stack web application where users can create an account, log in, explore templates, and save their favorites.
+A full-stack web app where users can browse templates, register/login, and save their favorites.
 
-This project was built as part of the **Gnxtace Technologies Software Engineer Intern Technical Task**.
-
----
-
-## 👤 Developer Details
-
-- **Name:** Rajesh M  
-- **Email:** raj3sh.dev@gmail.com  
-- **GitHub:** https://github.com/Rajesh9894  
+**Built by:** [Your Name]  
+**Contact:** [your@email.com]
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Frontend:** React.js (Vite) + Tailwind CSS  
-- **Backend:** Node.js + Express.js  
-- **Database:** SQLite (better-sqlite3)  
-- **Authentication:** JWT + bcryptjs  
-- **HTTP Client:** Axios  
-
-> Note: I used `better-sqlite3` to write raw SQL queries and better understand database operations instead of using an ORM.
+**Frontend:** React.js (Vite), Tailwind CSS, Axios, React Router DOM  
+**Backend:** Node.js, Express.js, SQLite (node-sqlite3-wasm), JWT Auth, bcryptjs
 
 ---
 
-## 📁 Project Structure
+## Project Structure
+
+```
 fullstack-intern-task/
-├── client/
-│ ├── src/
-│ │ ├── api/axios.js
-│ │ ├── components/
-│ │ │ ├── Navbar.jsx
-│ │ │ └── TemplateCard.jsx
-│ │ ├── pages/
-│ │ │ ├── Login.jsx
-│ │ │ ├── Register.jsx
-│ │ │ ├── Templates.jsx
-│ │ │ └── Favorites.jsx
-│ │ ├── App.jsx
-│ │ └── main.jsx
-│ └── package.json
-│
-├── server/
-│ ├── src/
-│ │ ├── db/
-│ │ │ ├── database.js
-│ │ │ └── seed.js
-│ │ ├── middleware/auth.js
-│ │ ├── routes/
-│ │ │ ├── auth.js
-│ │ │ ├── templates.js
-│ │ │ └── favorites.js
-│ │ └── index.js
-│ ├── data/
-│ └── package.json
-│
-└── README.md
-
+├── client/          → React frontend
+│   └── src/
+│       ├── pages/   → Register, Login, Templates, Favorites
+│       └── components/ → Navbar, TemplateCard
+└── server/          → Express backend
+    ├── routes/      → auth.js, templates.js, favorites.js
+    ├── middleware/  → auth.js (JWT check)
+    └── db/          → knex.js, migrate.js, seed.js
+```
 
 ---
 
-## 🚀 Setup & Run Locally
+## Setup Instructions
 
-### Prerequisites
-
-- Node.js (v18 or higher)
-- npm
-
----
-
-### Step 1: Clone the Repository
+### 1. Clone the repo
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/fullstack-intern-task.git
+git clone https://github.com/yourusername/fullstack-intern-task.git
 cd fullstack-intern-task
+```
 
-Setup Backend
+### 2. Setup & run the backend
+
+```bash
 cd server
 npm install
-cp .env.example .env
+node db/seed.js      # creates tables and seeds 7 templates
+npm run dev          # starts server on http://localhost:5000
+```
 
-Edit .env file:
+### 3. Setup & run the frontend
 
-JWT_SECRET=your_secret_key
-
-Run backend:
-
-npm run dev
-
-Backend runs at: http://localhost:5000
-
-Database is created automatically
-Sample templates are seeded automatically
-Step 3: Setup Frontend
-
-Open a new terminal:
-
+```bash
 cd client
 npm install
-npm run dev
+npm run dev          # starts frontend on http://localhost:3000
+```
 
-Frontend runs at: http://localhost:5173
+---
 
-Step 4: Use the App
-Register a new account
-Login
-Browse templates
-Click ❤️ to save favorites
-View them in "My Favorites"
-📡 API Endpoints
-Auth
-POST /api/auth/register
-POST /api/auth/login
-Templates
-GET /api/templates
-GET /api/templates/:id
-Favorites (Protected)
-GET /api/favorites
-POST /api/favorites/:templateId
-DELETE /api/favorites/:templateId
-✨ Features
-User registration & login
-Password hashing (bcryptjs)
-JWT authentication
-Browse templates (public)
-Add/remove favorites
-Protected routes
-Search templates
-Filter by category
-Responsive UI
-Auto database setup
-Clean error handling
-🌐 Deployment
-Backend (Render)
-Deploy server/
-Set environment variables:
-PORT
-JWT_SECRET
+## API Routes
 
+| Method | Route | Auth? | Description |
+|--------|-------|-------|-------------|
+| POST | /api/auth/register | No | Register new user |
+| POST | /api/auth/login | No | Login and get JWT token |
+| GET | /api/templates | No | List all templates |
+| GET | /api/templates/:id | No | Get single template |
+| POST | /api/favorites/:templateId | Yes | Toggle favorite |
+| GET | /api/favorites | Yes | Get user's favorites |
+
+---
+
+## Features
+
+- User registration and login with JWT
+- Passwords hashed with bcrypt
+- Browse 7 pre-seeded templates
+- Search templates by name/description
+- Filter templates by category
+- Add/remove favorites (heart button toggles)
+- Protected favorites page (redirects to login if not logged in)
+- Logout button clears session
+
+---
+
+## Notes
+
+- SQLite database file is at `server/db/database.sqlite`
+- JWT token is stored in localStorage
+- The database auto-creates tables on first run
+- Run `node db/seed.js` once to populate template data
+
+---
+
+## Deployment
+
+**Backend → Render:**
+1. Create a new Web Service on Render
+2. Set root directory to `server`
+3. Build command: `npm install && node db/seed.js`
+4. Start command: `node index.js`
+5. Add environment variable: `JWT_SECRET=yoursecretkey`
+
+**Frontend → Vercel:**
+1. Import the repo on Vercel
+2. Set root directory to `client`
+3. Build command: `npm run build`
+4. Output directory: `dist`
+5. Update the `API` variable in each page to your Render backend URL

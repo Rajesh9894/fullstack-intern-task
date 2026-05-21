@@ -1,6 +1,6 @@
 node_modules/
 .env
-server/data/
+*.sqlite
+*.sqlite-journal
 dist/
 .DS_Store
-*.log
