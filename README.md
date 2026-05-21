@@ -2,8 +2,8 @@
 
 A full-stack web app where users can browse templates, register/login, and save their favorites.
 
-**Built by:** [Your Name]  
-**Contact:** [your@email.com]
+**Built by:** Your Name  
+**Contact:** your@email.com
 
 ---
 
@@ -16,17 +16,15 @@ A full-stack web app where users can browse templates, register/login, and save 
 
 ## Project Structure
 
-```
-fullstack-intern-task/
-├── client/          → React frontend
-│   └── src/
-│       ├── pages/   → Register, Login, Templates, Favorites
-│       └── components/ → Navbar, TemplateCard
-└── server/          → Express backend
-    ├── routes/      → auth.js, templates.js, favorites.js
-    ├── middleware/  → auth.js (JWT check)
-    └── db/          → knex.js, migrate.js, seed.js
-```
+    fullstack-intern-task/
+    ├── client/               React frontend
+    │   └── src/
+    │       ├── pages/        Register, Login, Templates, Favorites
+    │       └── components/   Navbar, TemplateCard
+    └── server/               Express backend
+        ├── routes/           auth.js, templates.js, favorites.js
+        ├── middleware/       auth.js (JWT check)
+        └── db/               knex.js, migrate.js, seed.js
 
 ---
 
@@ -34,27 +32,25 @@ fullstack-intern-task/
 
 ### 1. Clone the repo
 
-```bash
-git clone https://github.com/yourusername/fullstack-intern-task.git
-cd fullstack-intern-task
-```
+    git clone https://github.com/Rajesh9894/fullstack-intern-task.git
+    cd fullstack-intern-task
 
-### 2. Setup & run the backend
+### 2. Setup and run the backend
 
-```bash
-cd server
-npm install
-node db/seed.js      # creates tables and seeds 7 templates
-npm run dev          # starts server on http://localhost:5000
-```
+    cd server
+    npm install
+    node db/seed.js
+    npm run dev
 
-### 3. Setup & run the frontend
+Server runs on http://localhost:5000
 
-```bash
-cd client
-npm install
-npm run dev          # starts frontend on http://localhost:3000
-```
+### 3. Setup and run the frontend
+
+    cd client
+    npm install
+    npm run dev
+
+Frontend runs on http://localhost:3000
 
 ---
 
@@ -76,9 +72,9 @@ npm run dev          # starts frontend on http://localhost:3000
 - User registration and login with JWT
 - Passwords hashed with bcrypt
 - Browse 7 pre-seeded templates
-- Search templates by name/description
+- Search templates by name or description
 - Filter templates by category
-- Add/remove favorites (heart button toggles)
+- Add or remove favorites (heart button toggles)
 - Protected favorites page (redirects to login if not logged in)
 - Logout button clears session
 
@@ -86,25 +82,25 @@ npm run dev          # starts frontend on http://localhost:3000
 
 ## Notes
 
-- SQLite database file is at `server/db/database.sqlite`
+- SQLite database file is created at `server/db/database.sqlite`
 - JWT token is stored in localStorage
-- The database auto-creates tables on first run
+- Tables are auto-created on first run
 - Run `node db/seed.js` once to populate template data
 
 ---
 
 ## Deployment
 
-**Backend → Render:**
-1. Create a new Web Service on Render
+**Backend on Render:**
+1. Create a new Web Service
 2. Set root directory to `server`
 3. Build command: `npm install && node db/seed.js`
 4. Start command: `node index.js`
 5. Add environment variable: `JWT_SECRET=yoursecretkey`
 
-**Frontend → Vercel:**
+**Frontend on Vercel:**
 1. Import the repo on Vercel
 2. Set root directory to `client`
 3. Build command: `npm run build`
 4. Output directory: `dist`
-5. Update the `API` variable in each page to your Render backend URL
+5. Update the API variable in each page to your Render backend URL
